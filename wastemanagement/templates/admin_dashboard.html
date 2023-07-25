@@ -1,0 +1,107 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            background-color: #fffdd0; /* Set the background color to cream */
+        }
+
+        h1 {
+            color: #000080; /* Dark blue color */
+        }
+
+        li {
+            margin-bottom: 35px; /* Add margin-bottom to create a gap between each complaint */
+        }
+
+        textarea#message {
+            border: 2px solid red; /* Red color border for the message box */
+        }
+
+        select#driver_id {
+            background-color: green; /* Green background color for the select box */
+            color: white; /* Set text color to white */
+        }
+
+        table {
+            border-collapse: collapse; /* Collapse table borders */
+            width: 100%; /* Set table width to 100% */
+        }
+
+        th, td {
+            padding: 8px; /* Add padding to table cells */
+        }
+
+        label[for="driver_id"],
+        label[for="message"] {
+            font-weight: bold; /* Make the labels bold */
+        }
+
+        input[type="submit"] {
+            background-color: orange; /* Set the background color to orange */
+            color: white; /* Set text color to white */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Display complaints -->
+    <h1>Complaints</h1>
+
+    <!-- admin_dashboard.html -->
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-success">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+
+    <!-- Rest of the template -->
+    <ul>
+        {% for complaint in complaints %}
+            <li>
+                <table>
+                    <tr>
+                        <th>Name:</th>
+                        <td>{{ complaint.name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Place:</th>
+                        <td>{{ complaint.place }}</td>
+                    </tr>
+                    <tr>
+                        <th>Date:</th>
+                        <td>{{ complaint.date }}</td>
+                    </tr>
+                    <tr>
+                        <th>Complaint:</th>
+                        <td>{{ complaint.complaint }}</td>
+                    </tr>
+                </table>
+                <br>
+                <form method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="complaint_id" value="{{ complaint.id }}">
+                    <label for="driver_id">Select Driver:</label>
+                    <select id="driver_id" name="driver_id" required>
+                        {% for driver in drivers %}
+                            <option value="{{ driver.id }}">{{ driver.email }}</option>
+                        {% endfor %}
+                    </select>
+
+                    <br>
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="3" cols="30"></textarea>
+                    <br>
+                    <input type="submit" value="Send Message">
+                </form>
+
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
+

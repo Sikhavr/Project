@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Login</title>
+    <style>
+        body {
+            background-color: lightpink;
+        }
+
+        h1 {
+            color: darkgreen;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            font-weight: bold;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="submit"] {
+            background-color: violet;
+        }
+    </style>
+</head>
+<body>
+    <h1>Admin Login</h1>
+    <form method="POST" action="{% url 'admin_login' %}">
+        {% csrf_token %}
+
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <input type="submit" value="Login">
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!--<!DOCTYPE html>-->
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--    <title>Dustbin Table</title>-->
+<!--    <style>-->
+<!--        table {-->
+<!--            border-collapse: collapse;-->
+<!--            width: 100%;-->
+<!--        }-->
+<!--        th, td {-->
+<!--            text-align: left;-->
+<!--            padding: 8px;-->
+<!--            border-bottom: 1px solid #ddd;-->
+<!--        }-->
+<!--        th {-->
+<!--            background-color: #f2f2f2;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <h1>Dustbin Table</h1>-->
+<!--    <table>-->
+<!--        <tr>-->
+<!--            <th>Place</th>-->
+<!--            <th>Location</th>-->
+<!--        </tr>-->
+<!--        {% for dustbin in dustbins %}-->
+<!--            <tr>-->
+<!--                <td>{{ dustbin.place }}</td>-->
+<!--                <td>{{ dustbin.location }}</td>-->
+<!--            </tr>-->
+<!--        {% endfor %}-->
+<!--    </table>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dustbin Table</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            text-align: left;
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
+    <script>
+        function showMap(lat, lng) {
+            var mapOptions = {
+                center: new google.maps.LatLng(lat, lng),
+                zoom: 10
+            };
+            var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+        }
+    </script>
+</head>
+<body>
+    <h1>Dustbin Table</h1>
+    <table>
+        <tr>
+            <th>Place</th>
+            <th>Location</th>
+            <th>Action</th>
+        </tr>
+        {% for dustbin in dustbins %}
+            <tr>
+                <td>{{ dustbin.place }}</td>
+                <td>{{ dustbin.location }}</td>
+                <td><button onclick="showMap({{ dustbin.latitude }}, {{ dustbin.longitude }})">Show Map</button></td>
+            </tr>
+        {% endfor %}
+    </table>
+    <div id="map" style="height: 400px; width: 100%;"></div>
+</body>
+</html>

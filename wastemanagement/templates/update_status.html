@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Complaint</title>
+</head>
+<body>
+    <h1>Add Complaint</h1>
+
+    <form method="post" action="{% url 'update_status' %}">
+        {% csrf_token %}
+
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="date">Date:</label>
+        <input type="datetime-local" id="date" name="date" required>
+
+        <label for="place">Place:</label>
+        <input type="text" id="place" name="place" required>
+
+
+        <label for="status">Status:</label>
+        <select id="status" name="status" required>
+            <option value="on progress">On Progress</option>
+            <option value="solved">Solved</option>
+            <option value="pending">Pending</option>
+        </select>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

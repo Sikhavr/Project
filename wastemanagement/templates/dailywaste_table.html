@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Daily Waste Table</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Daily Waste Table</h1>
+    {% if error_message %}
+        <p>{{ error_message }}</p>
+    {% else %}
+    <table>
+        <tr>
+            <th>Place</th>
+            <th>Route</th>
+            <th>Name</th>
+            <th>Plastic Waste</th>
+            <th>Food Waste</th>
+        </tr>
+        {% for dailywaste in dailywastes %}
+            <tr>
+                <td>{{ dailywaste.place }}</td>
+                <td>{{ dailywaste.route }}</td>
+                <td>{{ dailywaste.name }}</td>
+                <td>{{ dailywaste.plastic_waste }}</td>
+                <td>{{ dailywaste.food_waste }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+</body>
+</html>

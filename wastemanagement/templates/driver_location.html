@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Driver Location</title>
+</head>
+<body>
+    <h1>Driver Location</h1>
+    <form method="post" action="/dailywaste_table/">
+        {% csrf_token %}
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="location" required><br><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

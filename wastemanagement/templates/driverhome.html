@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Waste Management System</title>
+    <style>
+        /* Add CSS styles for the navigation bar */
+        .navbar {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            position: fixed;
+            top: 0;
+            right: 0;
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 10px;
+        }
+
+        .content {
+            margin-top: 40px; /* Add margin to content to avoid overlapping with the navbar */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Waste Management System</h1>
+    </header>
+    <div class="navbar">
+        <!-- Add the navigation links in the navigation bar -->
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'dustbin_table' %}">Dustbin</a>
+        <a href="{% url 'driver_location' %}">Map</a>
+        <a href="{% url 'driver_home' %}">View Complaints</a>
+
+    </div>
+    <div class="content">
+        <p>This system helps manage and track waste disposal, collection, and reduction.</p>
+        <p>Explore the various features and functionalities to effectively manage waste in your area.</p>
+    </div>
+</body>
+</html>
+

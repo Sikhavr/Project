@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Daily Waste Form</title>
+    <style>
+        body {
+            background-color: lemonchiffon;
+        }
+
+        h1 {
+            color: darkred;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="submit"] {
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>Daily Waste Form</h1>
+    <form method="POST" action="{% url 'save_dailywaste' %}">
+        {% csrf_token %}
+
+        <label for="place">Place:</label>
+        <input type="text" id="place" name="place" maxlength="50" required><br><br>
+
+        <label for="route">Route:</label>
+        <input type="text" id="route" name="route" maxlength="50" required><br><br>
+
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" maxlength="50" required><br><br>
+
+        <label for="plastic_waste">Plastic Waste:</label>
+        <select id="plastic_waste" name="plastic_waste" required>
+            <option value="" selected disabled>Select</option>
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+        </select><br><br>
+
+        <label for="food_waste">Food Waste:</label>
+        <select id="food_waste" name="food_waste" required>
+            <option value="" selected disabled>Select</option>
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+        </select><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

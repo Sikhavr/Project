@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Complaint Search Results</title>
+</head>
+<body>
+    <h1>complaint results</h1>
+
+	{% if search_results %}
+		<p>{{ search_results|length }} result(s) found:</p>
+		{% for complaint in search_results %}
+				<ul>
+					<li>name:{{complaint.name}}</li>
+					<li>date {{ complaint.date}}</li>
+					<li>place: {{ complaint.place }}</li>
+					<li>complaint: {{ complaint.complaint }}</li>
+
+				</ul>
+{% endfor %}
+	        <a href="/update_status">Update Status</a>
+
+	    {% else %}
+        <p>No results found.</p>
+	{% endif %}
+
+</body>
+</html>

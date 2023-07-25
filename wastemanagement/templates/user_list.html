@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Signup</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 3px solid black;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #FF0000; /* Dark blue color */
+            color: white;
+        }
+
+        tr:first-child {
+            background-color: ; /* Red color for the first row */
+            color: white;
+        }
+
+        tr:not(:first-child) {
+            background-color: yellow; /* Yellow color for other rows */
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="color: #000080;">User Signup</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Password</th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.password }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Complaint Status</title>
+    <style>
+        body {
+            background-color: moccasin;
+        }
+
+        h1 {
+            color: darkblue;
+        }
+
+        hr {
+            border-color: olive;
+        }
+
+        .status-pending {
+            color: red;
+        }
+
+        .status-solved {
+            color: green;
+        }
+
+        strong {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Complaint Status</h1>
+
+    {% if error %}
+        <p>{{ error }}</p>
+    {% else %}
+        {% for complaint in complaints %}
+            <p><strong>Name:</strong> {{ complaint.name }}</p>
+            <p><strong>Date:</strong> {{ complaint.date }}</p>
+            <p><strong>Place:</strong> {{ complaint.place }}</p>
+            <p class="{% if complaint.status == 'pending' %}status-pending{% else %}status-solved{% endif %}"><strong>Status:</strong> {{ complaint.status }}</p>
+            <hr>
+        {% endfor %}
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Waste Management System</title>
+    <style>
+        /* Add CSS styles for the navigation bar */
+        .navbar {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 10px;
+        }
+
+        .navbar .dropdown {
+            display: inline-block;
+        }
+
+        .navbar .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .navbar .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .navbar .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .content {
+            margin-top: 40px; /* Add margin to content to avoid overlapping with the navbar */
+        }
+
+        body {
+            background-image: url('static/ws.jpg');
+            background-size: 30%;
+            background-repeat: no-repeat;
+            padding-left:220px; /* Adjust the background-position value */
+            padding-top: 50px; /* Adjust the padding-top value to move the content down */
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .container h1,
+        .container p {
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <!-- Add the navigation links in the navigation bar -->
+        <a href="{% url 'home' %}">Home</a>
+        <div class="dropdown">
+            <a href="#" class="dropbtn">Login</a>
+            <div class="dropdown-content">
+                <a href="{% url 'admin_login' %}">Admin Login</a>
+                <a href="{% url 'user_login' %}">User Login</a>
+                <a href="{% url 'driver_login' %}">Driver Login</a>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <h1>Welcome to the Waste Management System</h1>
+        <p>This system helps manage and track waste disposal, collection, and reduction.</p>
+        <p>Explore the various features and functionalities to effectively manage waste in your area.</p>
+    </div>
+</body>
+</html>

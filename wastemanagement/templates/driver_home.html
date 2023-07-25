@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Driver Home</title>
+</head>
+<body>
+    <h1>Driver Home</h1>
+    <h2>My Messages</h2>
+    <form class="d-flex" method="get" action="{% url 'compliant_search' %}">
+        <input class="form-control me-2" type="search" placeholder="Date" aria-label="Date" name="date">
+        <input class="form-control me-2" type="search" placeholder="Place" aria-label="Place" name="place">
+        <button class="btn btn-outline-primary" type="submit">
+            <i class="fas fa-search"></i> Search
+        </button>
+    </form>
+    <ul>
+        {% for message in driver_messages %}
+            <li>
+                <strong>Complaint:</strong> {{ message.complaint.name }} - {{ message.complaint.place }} - {{ message.complaint.date }}
+                <br>
+                <strong>Message:</strong> {{ message.message }}
+            </li>
+        {% empty %}
+            <li>No messages found.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
+

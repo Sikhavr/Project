@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Complaint Registration</title>
+    <style>
+        body {
+            background-color: lightblue;
+        }
+
+        h1 {
+            color: brown;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="datetime-local"],
+        textarea {
+            border: 3px solid black;
+            padding: 5px;
+        }
+
+        .submit-button {
+            background-color: green;
+            margin-top: 10px;
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: lightgray;
+            text-decoration: none;
+            color: black;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Complaint Registration</h1>
+    <form method="POST" action="{% url 'complaint_register' %}">
+        {% csrf_token %}
+
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" maxlength="50" required><br><br>
+
+        <label for="place">Place:</label>
+        <input type="text" id="place" name="place" maxlength="50" required><br><br>
+
+        <label for="date">Date:</label>
+        <input type="datetime-local" id="date" name="date" required><br><br>
+
+        <label for="complaint">Complaint:</label>
+        <textarea id="complaint" name="complaint" rows="4" cols="50" required></textarea><br><br>
+
+        <input type="submit" value="Submit" class="submit-button">
+    </form>
+
+    <a href="{% url 'view_complaint_status' %}" class="button">View Complaint Status>></a>
+</body>
+</html>
